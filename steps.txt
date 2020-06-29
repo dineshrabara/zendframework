@@ -12,3 +12,8 @@ vagrant
 ln -s /home/dns/code/zendframework/library/Zend /home/dns/code/zendframework/ee/library
 
 sudo chmod 755 -R ee/library
+
+Controller and actions
+view and layout
+
+../bin/zf.sh enable layout
