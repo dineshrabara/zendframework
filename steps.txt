@@ -17,3 +17,13 @@ Controller and actions
 view and layout
 
 ../bin/zf.sh enable layout
+
+nginx setup envirments
+    location / {
+    ...
+    fastcgi_param   APPLICATION_ENV  production;
+    fastcgi_param   APPLICATION_CONFIG user;
+    ...
+    }
+
+Model example here [https://framework.zend.com/manual/1.12/en/learning.quickstart.create-model.html]
