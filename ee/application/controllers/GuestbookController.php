@@ -14,4 +14,25 @@ class GuestbookController extends Zend_Controller_Action
         $this->view->entries = $guestbook->fetchAll();
     }
 
+    public function signAction()
+    {
+        $request = $this->getRequest();
+        $form    = new Application_Form_Guestbook();
+        echo '<pre>';print_r($form);exit;
+
+        // if ($this->getRequest()->isPost()) {
+        //     if ($form->isValid($request->getPost())) {
+        //         $comment = new Application_Model_Guestbook($form->getValues());
+        //         $mapper  = new Application_Model_GuestbookMapper();
+        //         $mapper->save($comment);
+        //         return $this->_helper->redirector('index');
+        //     }
+        // }
+
+        $this->view->form = $form;
+    }
+
+
 }
+
+
