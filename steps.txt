@@ -27,3 +27,9 @@ nginx setup envirments
     }
 
 Model example here [https://framework.zend.com/manual/1.12/en/learning.quickstart.create-model.html]
+
+https://docs.google.com/spreadsheets/d/1lwGHfCse5wG4U1CT8UOfPVIaZxY8r-YiJ__zp5rH5mE/edit#gid=1860126521
+https://framework.zend.com/manual/1.12/en/learning.quickstart.create-form.html
+https://framework.zend.com/manual/1.12/en/zend.form.standardElements.html
+https://framework.zend.com/manual/1.12/en/learning.form.decorators.intro.html
+http://zf.sr/guestbook/sign
