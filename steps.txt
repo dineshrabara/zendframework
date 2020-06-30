@@ -33,3 +33,37 @@ https://framework.zend.com/manual/1.12/en/learning.quickstart.create-form.html
 https://framework.zend.com/manual/1.12/en/zend.form.standardElements.html
 https://framework.zend.com/manual/1.12/en/learning.form.decorators.intro.html
 http://zf.sr/guestbook/sign
+
+30-06-2020
+1. Setup Desktop system 10 minutes
+2. Install VPN 10 minutes
+3. skype configration [problem with headphone] 1 hour 30 minutes
+4. install google chrom 10 minutes
+5. install VS Code Because no editor on my system  10 minutes
+6. install PHPStorm 10 minutes
+install mysql server missing
+
+php performance apache vs nginx
+    It performs 2.5 times faster than Apache according to a benchmark test running up to 1,000 simultaneous connections. 
+    Nginx serves the static resources without PHP having to know about this. On the other hand, Apache handles all those 
+    requests with that costly overhead.
+
+Local Run without apache2
+    php -S localhost:8080 public/index.php
+
+
+    1	ZF Training + Coding Standard
+
+
+
+
+1. Request lifecycle done
+2. Autoloading in Zend Framework done 
+3. MVC structure done 
+4. How controller works? done
+5. What is frontcontroller? done
+6. How model works? done
+
+
+
+	4 hours	done	
