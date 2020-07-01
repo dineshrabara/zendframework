@@ -17,8 +17,10 @@ class GuestbookController extends Zend_Controller_Action
     public function signAction()
     {
         $request = $this->getRequest();
-        $form    = new Application_Form_Guestbook();
-        echo '<pre>';print_r($form);exit;
+        $form = new Application_Form_Guestbook();
+//        echo '<pre>';
+//        print_r($form);
+//        exit;
 
         // if ($this->getRequest()->isPost()) {
         //     if ($form->isValid($request->getPost())) {

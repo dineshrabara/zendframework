@@ -38,7 +38,7 @@ http://zf.sr/guestbook/sign
 1. Setup Desktop system 10 minutes
 2. Install VPN 10 minutes
 3. skype configration [problem with headphone] 1 hour 30 minutes
-4. install google chrom 10 minutes
+4. install google chrome 10 minutes
 5. install VS Code Because no editor on my system  10 minutes
 6. install PHPStorm 10 minutes
 install mysql server missing
@@ -49,21 +49,4 @@ php performance apache vs nginx
     requests with that costly overhead.
 
 Local Run without apache2
-    php -S localhost:8080 public/index.php
-
-
-    1	ZF Training + Coding Standard
-
-
-
-
-1. Request lifecycle done
-2. Autoloading in Zend Framework done 
-3. MVC structure done 
-4. How controller works? done
-5. What is frontcontroller? done
-6. How model works? done
-
-
-
-	4 hours	done	
+    APPLICATION_ENV=development php -S localhost:8080 ee/public/index.php
