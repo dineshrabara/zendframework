@@ -8,8 +8,9 @@ zf Command Line Tool : ./bin/zf.sh
 vagrant
 
     https://linuxize.com/post/how-to-install-vagrant-on-ubuntu-18-04/
+    documents[https://www.vagrantup.com/]
 
-ln -s /home/dns/code/zendframework/library/Zend /home/dns/code/zendframework/ee/library
+ln -s /home/dineshrabara/workspace/zendframework/library/Zend /home/dineshrabara/workspace/zendframework/ee/library
 
 sudo chmod 755 -R ee/library
 
