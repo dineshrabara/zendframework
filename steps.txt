@@ -51,3 +51,5 @@ php performance apache vs nginx
 
 Local Run without apache2
     APPLICATION_ENV=development php -S localhost:8080 ee/public/index.php
+
+videos => http://192.168.1.183:8181/BAS%20KT/zend%20session/
