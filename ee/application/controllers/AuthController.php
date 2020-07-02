@@ -12,8 +12,9 @@ class AuthController extends Zend_Controller_Action
     {
         $db = $this->_getParam('db');
         $loginForm = new Application_Form_AuthLogin();
+        $request = $this->getRequest();
 
-        if ($loginForm->isValid($_POST)) {
+        if ($this->getRequest()->isPost() && $loginForm->isValid($_POST)) {
             $adapter = new Zend_Auth_Adapter_DbTable(
                 $db,
                 'users',
@@ -34,6 +35,7 @@ class AuthController extends Zend_Controller_Action
                 return;
             }
         }
+
         $this->view->loginForm = $loginForm;
     }
 
