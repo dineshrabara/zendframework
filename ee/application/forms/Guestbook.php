@@ -32,7 +32,7 @@ class Application_Form_Guestbook extends Zend_Form
              'label' => 'Please enter the 5 letters displayed below:',
              'required' => true,
              'captcha' => array(
-                 'captcha' => 'Figlet',
+                 'captcha' => 'Dumb',
                  'wordLen' => 5,
                  'timeout' => 300,
              ),

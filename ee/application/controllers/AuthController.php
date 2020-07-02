@@ -11,8 +11,8 @@ class AuthController extends Zend_Controller_Action
     public function loginAction()
     {
         $db = $this->_getParam('db');
-
         $loginForm = new Application_Form_AuthLogin();
+
         if ($loginForm->isValid($_POST)) {
             $adapter = new Zend_Auth_Adapter_DbTable(
                 $db,
