@@ -18,6 +18,7 @@ Controller and actions
 view and layout
 
 ../bin/zf.sh enable layout
+for layout we are using https://github.com/tabler/tabler
 
 nginx setup envirments
     location / {
