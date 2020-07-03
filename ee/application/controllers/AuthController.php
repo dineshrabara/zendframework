@@ -40,5 +40,16 @@ class AuthController extends Zend_Controller_Action
     }
 
 
+    public function registerAction()
+    {
+        $authRegister = new Application_Form_AuthRegister();
+        $request = $this->getRequest();
+
+        if ($this->getRequest()->isPost() && $authRegister->isValid($_POST)) {
+
+        }
+
+        $this->view->authRegister = $authRegister;
+    }
 }
 

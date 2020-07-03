@@ -69,6 +69,7 @@ Demo application
 Common Tasks
 - create theme menu/js/css/form decorator/grid layout
 - login form validation/layout/securities
+- flash message at theme
 - register form validation/layout/securities/email for verification
 - user add/edit/delete/searching/pagination/permission
 - modules directory structure and load
