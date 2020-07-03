@@ -13,3 +13,4 @@ composer.lock
 bin/dbunit
 bin/phpunit
 /ee/data/session/
+/ee/data/log/
