@@ -51,6 +51,27 @@ php performance apache vs nginx
     requests with that costly overhead.
 
 Local Run without apache2
-    APPLICATION_ENV=development php -S localhost:8080 ee/public/index.php
+    APPLICATION_ENV=development php -S localhost:8080 -t ee/public/
 
 videos => http://192.168.1.183:8181/BAS%20KT/zend%20session/
+
+
+Demo application
+- Create Login and Register Form. use session with Zend_Auth
+- Use Zend Mail to send email after user registration
+- Acl for USER/Role
+- Must create modules (User, Purchase and Order)
+- Model, Mapper
+- Use Zend_Form with validation
+- Must use view helper to format price or date
+- MUST USE SERVICE LAYER
+
+Common Tasks
+- create theme menu/js/css/form decorator/grid layout
+- login form validation/layout/securities
+- register form validation/layout/securities/email for verification
+- user add/edit/delete/searching/pagination/permission
+- modules directory structure and load
+- use DB_Table+model+wrapper=[model]
+- user view helper for format price or date
+- service layout for business logic
