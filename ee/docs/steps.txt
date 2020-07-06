@@ -73,6 +73,8 @@ Common Tasks
 - flash message at theme
 - register form validation/layout/securities/email for verification
 - user add/edit/delete/searching/pagination/permission
+- Purchase add/edit/delete/searching/pagination/permission
+- Order add/edit/delete/searching/pagination/permission
 - use DB_Table+model+wrapper=[model]
 - user view helper for format price or date
 - service layout for business logic
