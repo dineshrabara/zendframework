@@ -16,20 +16,21 @@ class Auth_LoginController extends Zend_Controller_Action
 
         if ($this->getRequest()->isPost() && $loginForm->isValid($_POST)) {
             $data = $loginForm->getValues();
+            $data['password'] = md5($data['password']);
             $auth = Zend_Auth::getInstance();
+
             $authAdapter = new Zend_Auth_Adapter_DbTable($users->getAdapter(), 'users');
-            $authAdapter->setIdentityColumn('email')
-                ->setCredentialColumn('password');
-            $authAdapter->setIdentity($data['email'])
-                ->setCredential($data['password']);
+            $authAdapter->setIdentityColumn('email')->setCredentialColumn('password');
+            $authAdapter->setIdentity($data['email'])->setCredential($data['password']);
             $result = $auth->authenticate($authAdapter);
+
             if ($result->isValid()) {
                 $storage = new Zend_Auth_Storage_Session();
                 $storage->write($authAdapter->getResultRowObject());
                 $this->redirect('/');
-            } else {
-                $this->view->errorMessage = "Invalid username or password. Please try again.";
             }
+            $this->view->errorMessage = "Invalid username or password. Please try again.";
+
         }
 
         $this->view->loginForm = $loginForm;

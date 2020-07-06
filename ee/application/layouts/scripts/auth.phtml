@@ -36,6 +36,10 @@
     <div class="page-single">
         <div class="container">
             <div class="row">
+                <!-- Flash Message start -->
+                <?php echo $this->render('partial/flashMessage.phtml'); ?>
+                <!-- Flash Message End -->
+
                 <!-- Body content start -->
                 <?php echo $this->layout()->content; ?>
                 <!-- Body content end -->

@@ -5,10 +5,12 @@ CREATE TABLE guestbook (
   created DATETIME NOT NULL
 );
 
-
+DROP TABLE IF EXISTS users;
 CREATE TABLE users (
       id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      email VARCHAR(255) NOT NULL,
+      first_name VARCHAR(50) NOT NULL unique,
+      last_name VARCHAR(50) NOT NULL unique,
+      email VARCHAR(50) NOT NULL unique,
       password VARCHAR(255) NOT NULL,
-      password_salt VARCHAR(255) NOT NULL
+      password_salt VARCHAR(255) NULL
     );
