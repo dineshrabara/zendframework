@@ -85,5 +85,7 @@ for module create commands
 ../bin/zf.sh enable form auth
 ../bin/zf.sh create form login auth
 ../bin/zf.sh create model User
+../bin/zf.sh create db-table User users
+../bin/zf.sh create model UserMapper
 
 authentication => http://zendgeek.blogspot.com/2009/07/zend-framework-sign-up-and.html

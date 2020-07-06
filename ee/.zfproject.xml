@@ -25,10 +25,12 @@
       <modelsDirectory>
         <dbTableDirectory>
           <dbTableFile dbTableName="Guestbook"/>
+          <dbTableFile dbTableName="User"/>
         </dbTableDirectory>
         <modelFile modelName="GuestbookMapper"/>
         <modelFile modelName="Guestbook"/>
         <modelFile modelName="User"/>
+        <modelFile modelName="UserMapper"/>
       </modelsDirectory>
       <modulesDirectory>
         <moduleDirectory moduleName="auth">

@@ -8,9 +8,10 @@ CREATE TABLE guestbook (
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
       id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      first_name VARCHAR(50) NOT NULL unique,
-      last_name VARCHAR(50) NOT NULL unique,
+      first_name VARCHAR(50) NOT NULL,
+      last_name VARCHAR(50) NOT NULL,
       email VARCHAR(50) NOT NULL unique,
       password VARCHAR(255) NOT NULL,
-      password_salt VARCHAR(255) NULL
+      password_salt VARCHAR(255) NULL,
+      created_at DATETIME NOT NULL
     );
