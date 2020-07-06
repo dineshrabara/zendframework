@@ -24,7 +24,12 @@ class IndexController extends Zend_Controller_Action
      */
     public function indexAction()
     {
-        // action body
+        $storage = new Zend_Auth_Storage_Session();
+        $data = $storage->read();
+        if (!$data) {
+            $this->redirect('auth/login');
+        }
+        $this->view->user = $data;
     }
 
 }

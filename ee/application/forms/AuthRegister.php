@@ -8,8 +8,8 @@ class Application_Form_AuthRegister extends Zend_Form
         $this->setMethod('post');
 
         $this->addElement(
-            'text', 'username', array(
-            'label' => 'Username:',
+            'text', 'email', array(
+            'label' => 'Email:',
             'required' => true,
             'filters' => array('StringTrim'),
         ));

@@ -81,4 +81,7 @@ Common Tasks
 
 
 for module create commands
- ../bin/zf.sh create controller register index Auth
+ ../bin/zf.sh create controller register index auth
+../bin/zf.sh enable form auth
+../bin/zf.sh create form login auth
+../bin/zf.sh create model User

@@ -16,11 +16,7 @@
           <actionMethod actionName="sign"/>
         </controllerFile>
       </controllersDirectory>
-      <formsDirectory>
-        <formFile formName="Guestbook"/>
-        <formFile formName="AuthLogin"/>
-        <formFile formName="AuthRegister"/>
-      </formsDirectory>
+      <formsDirectory/>
       <layoutsDirectory>
         <layoutScriptsDirectory>
           <layoutScriptFile layoutName="layout"/>
@@ -32,9 +28,10 @@
         </dbTableDirectory>
         <modelFile modelName="GuestbookMapper"/>
         <modelFile modelName="Guestbook"/>
+        <modelFile modelName="User"/>
       </modelsDirectory>
       <modulesDirectory>
-        <moduleDirectory moduleName="Auth">
+        <moduleDirectory moduleName="auth">
           <configsDirectory enabled="false"/>
           <controllersDirectory>
             <controllerFile controllerName="Login">
@@ -50,6 +47,7 @@
           </layoutsDirectory>
           <modelsDirectory>
             <dbTableDirectory enabled="false"/>
+            <modelFile modelName="User"/>
           </modelsDirectory>
           <servicesDirectory enabled="false"/>
           <viewsDirectory>

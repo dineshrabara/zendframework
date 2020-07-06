@@ -10,35 +10,36 @@ class Auth_LoginController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $db = $this->_getParam('db');
+        $users = new Application_Model_User();
         $loginForm = new Application_Form_AuthLogin();
         $request = $this->getRequest();
 
         if ($this->getRequest()->isPost() && $loginForm->isValid($_POST)) {
-            $adapter = new Zend_Auth_Adapter_DbTable(
-                $db,
-                'users',
-                'username',
-                'password',
-                'MD5(CONCAT(?, password_salt))'
-            );
-
-            $adapter->setIdentity($loginForm->getValue('username'));
-            $adapter->setCredential($loginForm->getValue('password'));
-
+            $data = $loginForm->getValues();
             $auth = Zend_Auth::getInstance();
-            $result = $auth->authenticate($adapter);
-
+            $authAdapter = new Zend_Auth_Adapter_DbTable($users->getAdapter(), 'users');
+            $authAdapter->setIdentityColumn('email')
+                ->setCredentialColumn('password');
+            $authAdapter->setIdentity($data['email'])
+                ->setCredential($data['password']);
+            $result = $auth->authenticate($authAdapter);
             if ($result->isValid()) {
-                $this->_helper->FlashMessenger('Successful Login');
-                $this->_redirect('/');
-                return;
+                $storage = new Zend_Auth_Storage_Session();
+                $storage->write($authAdapter->getResultRowObject());
+                $this->redirect('/');
+            } else {
+                $this->view->errorMessage = "Invalid username or password. Please try again.";
             }
         }
 
         $this->view->loginForm = $loginForm;
     }
 
-
+    public function outAction()
+    {
+        $storage = new Zend_Auth_Storage_Session();
+        $storage->clear();
+        $this->redirect('auth/login');
+    }
 }
 

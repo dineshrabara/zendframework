@@ -6,10 +6,9 @@ class Application_Form_AuthLogin extends Zend_Form
     public function init()
     {
         $this->setMethod('post');
-
         $this->addElement(
-            'text', 'username', array(
-            'label' => 'Username:',
+            'text', 'email', array(
+            'label' => 'Email:',
             'required' => true,
             'filters' => array('StringTrim'),
         ));
