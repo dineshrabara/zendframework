@@ -1,6 +1,6 @@
 <?php
 
-class AuthController extends Zend_Controller_Action
+class LoginController extends Zend_Controller_Action
 {
 
     public function init()
@@ -8,8 +8,9 @@ class AuthController extends Zend_Controller_Action
         /* Initialize action controller here */
     }
 
-    public function loginAction()
+    public function indexAction()
     {
+        echo "test";exit;
         $db = $this->_getParam('db');
         $loginForm = new Application_Form_AuthLogin();
         $request = $this->getRequest();
@@ -40,16 +41,5 @@ class AuthController extends Zend_Controller_Action
     }
 
 
-    public function registerAction()
-    {
-        $authRegister = new Application_Form_AuthRegister();
-        $request = $this->getRequest();
-
-        if ($this->getRequest()->isPost() && $authRegister->isValid($_POST)) {
-
-        }
-
-        $this->view->authRegister = $authRegister;
-    }
 }
 
