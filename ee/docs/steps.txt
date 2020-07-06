@@ -67,12 +67,12 @@ Demo application
 - MUST USE SERVICE LAYER
 
 Common Tasks
+- modules directory structure and auto load
 - create theme menu/js/css/form decorator/grid layout
 - login form validation/layout/securities
 - flash message at theme
 - register form validation/layout/securities/email for verification
 - user add/edit/delete/searching/pagination/permission
-- modules directory structure and load
 - use DB_Table+model+wrapper=[model]
 - user view helper for format price or date
 - service layout for business logic

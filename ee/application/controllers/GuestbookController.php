@@ -16,16 +16,6 @@ class GuestbookController extends Zend_Controller_Action
 
     public function signAction()
     {
-        $mysession = new Zend_Session_Namespace('mysession');
-
-        if (!isset($mysession->counter)) {
-            $mysession->counter = 1000;
-        } else {
-            $mysession->counter++;
-        }
-        if ($mysession->counter > 1999) {
-            unset($mysession->counter);
-        }
         $request = $this->getRequest();
         $form = new Application_Form_Guestbook();
 
@@ -39,7 +29,6 @@ class GuestbookController extends Zend_Controller_Action
         }
 
         $this->view->form = $form;
-        $this->view->mysession = $mysession;
     }
 
 
