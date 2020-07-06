@@ -1,3 +1,24 @@
-<?php
-$this->form->setAction($this->url());
-echo $this->form;
+<div class="row row-cards row-deck">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Guest Book Add New</h3>
+                <div class="card-options">
+                    <a href="<?php echo $this->url(
+                        array(
+                            'controller' => 'guestbook',
+                            'action' => 'index',
+                        ),
+                        'default',
+                        true) ?>" class="btn btn-info btn-lg">Back to index</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <?php
+                $this->form->setAction($this->url());
+                echo $this->form;
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
