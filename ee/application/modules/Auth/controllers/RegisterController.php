@@ -1,6 +1,6 @@
 <?php
 
-class Auth_LoginController extends Zend_Controller_Action
+class Auth_RegisterController extends Zend_Controller_Action
 {
 
     public function init()

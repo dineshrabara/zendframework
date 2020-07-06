@@ -77,4 +77,8 @@ Common Tasks
 - Order add/edit/delete/searching/pagination/permission
 - use DB_Table+model+wrapper=[model]
 - user view helper for format price or date
-- service layout for business logic
+- service layout for business
+
+
+for module create commands
+ ../bin/zf.sh create controller register index Auth
