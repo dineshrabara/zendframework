@@ -1,19 +1,24 @@
 <?php
 
-class GuestbookController extends Zend_Controller_Action
+/**
+ * Class GuestbookController
+ */
+class GuestbookController extends AdminController
 {
-
-    public function init()
-    {
-        /* Initialize action controller here */
-    }
-
+    /**
+     * Index action for list guestbook
+     */
     public function indexAction()
     {
         $guestbook = new Application_Model_GuestbookMapper();
         $this->view->entries = $guestbook->fetchAll();
     }
 
+    /**
+     * Sign guestbook action
+     * @return mixed
+     * @throws Zend_Form_Exception
+     */
     public function signAction()
     {
         $request = $this->getRequest();
@@ -24,6 +29,7 @@ class GuestbookController extends Zend_Controller_Action
                 $comment = new Application_Model_Guestbook($form->getValues());
                 $mapper = new Application_Model_GuestbookMapper();
                 $mapper->save($comment);
+                $this->_helper->FlashMessenger->addMessage(array('success' => "Guestbook has been successfully updated."));
                 return $this->_helper->redirector('index');
             }
         }

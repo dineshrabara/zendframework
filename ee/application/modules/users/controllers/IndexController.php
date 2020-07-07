@@ -3,18 +3,8 @@
 /**
  * Class Users_IndexController
  */
-class Users_IndexController extends Zend_Controller_Action
+class Users_IndexController extends AdminController
 {
-    /**
-     * Get flash messages and pass to the view.
-     */
-    public function init()
-    {
-        if ($this->_helper->FlashMessenger->hasMessages()) {
-            $this->view->messages = $this->_helper->FlashMessenger->getMessages();
-        }
-    }
-
     /**
      * Users entries list action
      */

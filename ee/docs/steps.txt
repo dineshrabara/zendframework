@@ -85,20 +85,21 @@ Plan for 07-07-2020
 - service layout for business
 
 Queries
-form decorate
-    ->removeDecorator('label')
-    ->removeDecorator('HtmlTag')
-autoload
-    --module add
-MD5 for password
-    --okay now
-structural interface
-edit url
-    guestbook/edit/1 for edit
-    guestbook/delete/1 for delete[delete action]
-custom validation
-    isvalid method override
-how to share data with all controller
+    form decorate
+        ->removeDecorator('label')
+        ->removeDecorator('HtmlTag')
+    autoload
+        --module add
+    MD5 for password
+        --okay now
+    structural interface
+    edit url
+        guestbook/edit/1 for edit
+        guestbook/delete/1 for delete[delete action]
+    custom validation
+        isvalid method override
+    how to share data with all controller
+    delete popup for confirmation once base on model boostrap
 
 for module create commands
  ../bin/zf.sh create controller Index 1 users
@@ -107,6 +108,7 @@ for module create commands
 ../bin/zf.sh create model User
 ../bin/zf.sh create db-table User users
 ../bin/zf.sh create model UserMapper
+../bin/zf.sh create controller Admin
 
 authentication => http://zendgeek.blogspot.com/2009/07/zend-framework-sign-up-and.html
 .zfproject.xml used for command line tool

@@ -58,7 +58,9 @@ class Users_Model_UserMapper
         if ($user->getPassword()) {
             $data['password'] = $user->getPassword();
         }
-
+        if (!$user->getCreatedAt()) {
+            $data['created_at'] = date('Y-m-d H:i:s');
+        }
         if (null === ($id = $user->getId())) {
             unset($data['id']);
             $this->getDbTable()->insert($data);

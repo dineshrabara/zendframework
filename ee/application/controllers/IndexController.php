@@ -4,7 +4,7 @@
  * IndexController
  */
 
-class IndexController extends Zend_Controller_Action
+class IndexController extends AdminController
 {
 
     /**
@@ -14,7 +14,7 @@ class IndexController extends Zend_Controller_Action
      */
     public function init()
     {
-        /* Initialize action controller here */
+        parent::init();
     }
 
     /**
@@ -24,12 +24,7 @@ class IndexController extends Zend_Controller_Action
      */
     public function indexAction()
     {
-        $storage = new Zend_Auth_Storage_Session();
-        $data = $storage->read();
-        if (!$data) {
-            $this->redirect('users/login');
-        }
-        $this->view->user = $data;
+        //add code here if require any
     }
 
 }

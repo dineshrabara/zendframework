@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class Bootstrap
+ */
+require_once 'controllers/AdminController.php';
+
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
     /**
