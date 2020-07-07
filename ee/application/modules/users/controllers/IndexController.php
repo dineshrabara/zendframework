@@ -73,8 +73,8 @@ class Users_IndexController extends Zend_Controller_Action
      */
     public function deleteAction()
     {
-        if ($this->getRequest()->isGet()) {
-            $userId = $this->getRequest()->getParam('id');
+        $userId = $this->getRequest()->getParam('id');
+        if ($this->getRequest()->isGet() && $userId) {
             $modelObj = new Users_Model_UserMapper();
             if ($modelObj->delete($userId)) {
                 $this->_helper->FlashMessenger->addMessage(array('success' => "User has been successfully deleted."));
