@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Auth_Model_UserMapper
+ * Class Users_Model_UserMapper
  */
-class Auth_Model_UserMapper
+class Users_Model_UserMapper
 {
     /**
      * @var
@@ -34,16 +34,16 @@ class Auth_Model_UserMapper
     public function getDbTable()
     {
         if (null === $this->_dbTable) {
-            $this->setDbTable('Auth_Model_DbTable_User');
+            $this->setDbTable('Users_Model_DbTable_User');
         }
         return $this->_dbTable;
     }
 
     /**
-     * @param Auth_Model_User $user
+     * @param Users_Model_User $user
      * @throws Exception
      */
-    public function register(Auth_Model_User $user)
+    public function register(Users_Model_User $user)
     {
         $data = array(
             'first_name' => $user->getFirstName(),
@@ -56,12 +56,12 @@ class Auth_Model_UserMapper
     }
 
     /**
-     * @param Auth_Model_User $user
+     * @param Users_Model_User $user
      * @param null $field
      * @return bool
      * @throws Exception
      */
-    function isExist(Auth_Model_User $user, $field = null)
+    function isExist(Users_Model_User $user, $field = null)
     {
         $select = $this->getDbTable()->select()
             ->from($this->_dbTable, [$field])
@@ -75,10 +75,10 @@ class Auth_Model_UserMapper
 
     /**
      * @param $id
-     * @param Auth_Model_User $user
+     * @param Users_Model_User $user
      * @throws Exception
      */
-    public function find($id, Auth_Model_User $user)
+    public function find($id, Users_Model_User $user)
     {
         $result = $this->getDbTable()->find($id);
         if (0 == count($result)) {
@@ -100,7 +100,7 @@ class Auth_Model_UserMapper
         $resultSet = $this->getDbTable()->fetchAll();
         $entries = array();
         foreach ($resultSet as $row) {
-            $entry = new Auth_Model_User();
+            $entry = new Users_Model_User();
             $entry->setId($row->id)
                 ->setEmail($row->email)
                 ->setFirstName($row->comment)

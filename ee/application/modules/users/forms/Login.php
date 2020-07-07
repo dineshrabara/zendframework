@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Auth_Form_Login
+ * Class Users_Form_Login
  */
-class Auth_Form_Login extends Zend_Form
+class Users_Form_Login extends Zend_Form
 {
     /**
      * @throws Zend_Form_Exception

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Auth_Model_User
+ * Class Users_Model_User
  */
-class Auth_Model_User
+class Users_Model_User
 {
     /**
      * @fields
@@ -16,7 +16,7 @@ class Auth_Model_User
     protected $_id;
 
     /**
-     * Auth_Model_User constructor.
+     * Users_Model_User constructor.
      * @param array|null $options
      */
     public function __construct(array $options = null)

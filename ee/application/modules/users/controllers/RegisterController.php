@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Auth_RegisterController
+ * Class Users_RegisterController
  */
-class Auth_RegisterController extends Zend_Controller_Action
+class Users_RegisterController extends Zend_Controller_Action
 {
 
     /**
@@ -20,13 +20,13 @@ class Auth_RegisterController extends Zend_Controller_Action
      */
     public function indexAction()
     {
-        $authRegister = new Auth_Form_Register();
+        $authRegister = new Users_Form_Register();
         $request = $this->getRequest();
 
         if ($this->getRequest()->isPost() && $authRegister->isValid($_POST)) {
             $data = $authRegister->getValues();
-            $user = new Auth_Model_User($data);
-            $mapper = new Auth_Model_UserMapper();
+            $user = new Users_Model_User($data);
+            $mapper = new Users_Model_UserMapper();
 
             if ($data['password'] != $data['confirm_password']) {
                 $this->view->errorMessage = "Password and confirm password not match Please check";

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Auth_Form_Register
+ * Class Users_Form_Register
  */
-class Auth_Form_Register extends Zend_Form
+class Users_Form_Register extends Zend_Form
 {
 
     /**

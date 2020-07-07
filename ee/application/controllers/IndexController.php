@@ -27,7 +27,7 @@ class IndexController extends Zend_Controller_Action
         $storage = new Zend_Auth_Storage_Session();
         $data = $storage->read();
         if (!$data) {
-            $this->redirect('auth/login');
+            $this->redirect('users/login');
         }
         $this->view->user = $data;
     }

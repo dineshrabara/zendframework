@@ -89,7 +89,9 @@ form decorate
     ->removeDecorator('label')
     ->removeDecorator('HtmlTag')
 autoload
+    --module add
 MD5 for password
+    --okay now
 structural interface
 edit url
 

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Auth_LoginController
+ * Class Users_LoginController
  */
-class Auth_LoginController extends Zend_Controller_Action
+class Users_LoginController extends Zend_Controller_Action
 {
 
     /**
@@ -20,8 +20,8 @@ class Auth_LoginController extends Zend_Controller_Action
      */
     public function indexAction()
     {
-        $users = new Auth_Model_User();
-        $loginForm = new Auth_Form_Login();
+        $users = new Users_Model_User();
+        $loginForm = new Users_Form_Login();
         $request = $this->getRequest();
 
         if ($this->getRequest()->isPost() && $loginForm->isValid($_POST)) {
@@ -29,13 +29,13 @@ class Auth_LoginController extends Zend_Controller_Action
             $data['password'] = md5($data['password']);
             $auth = Zend_Auth::getInstance();
 
-            $authAdapter = new Zend_Auth_Adapter_DbTable($users->getAdapter(), 'users');
+            $authAdapter = new Zend_Users_Adapter_DbTable($users->getAdapter(), 'users');
             $authAdapter->setIdentityColumn('email')->setCredentialColumn('password');
             $authAdapter->setIdentity($data['email'])->setCredential($data['password']);
             $result = $auth->authenticate($authAdapter);
 
             if ($result->isValid()) {
-                $storage = new Zend_Auth_Storage_Session();
+                $storage = new Zend_Users_Storage_Session();
                 $storage->write($authAdapter->getResultRowObject());
                 $this->redirect('/');
             }
