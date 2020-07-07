@@ -56,6 +56,11 @@ class Users_Form_Register extends Zend_Form
             ),
         ));
 
+        // Add CSRF protection.
+        $this->addElement('hash', 'csrf', array(
+            'ignore' => true,
+        ));
+
         $this->addElement('submit', 'submit', array(
             'ignore' => true,
             'label' => 'Register',

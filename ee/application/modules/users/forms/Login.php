@@ -23,6 +23,11 @@ class Users_Form_Login extends Zend_Form
             'required' => true,
         ));
 
+        // Add CSRF protection.
+        $this->addElement('hash', 'csrf', array(
+            'ignore' => true,
+        ));
+
         $this->addElement('submit', 'submit', array(
             'ignore' => true,
             'label' => 'Login',
