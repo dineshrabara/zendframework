@@ -1,4 +1,16 @@
-<br /><br />
-<?php
-$this->authRegister->setAction($this->url());
-echo $this->authRegister;
+<div class="col col-login mx-auto">
+    <div class="text-center mb-6">
+        <img src="<?php echo $this->baseUrl('/demo/brand/tabler.svg') ?>" class="h-6" alt="">
+    </div>
+
+    <div class="card-body p-6">
+        <div class="card-title">Create Account</div>
+        <?php
+        $this->authRegister->setAction($this->url());
+        echo $this->authRegister;
+        ?>
+    </div>
+    <div class="text-center text-muted">
+        Do have account ? <a href="/users/login">Sign In</a>
+    </div>
+</div>

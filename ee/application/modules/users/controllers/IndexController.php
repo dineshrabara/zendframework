@@ -34,6 +34,7 @@ class Users_IndexController extends AdminController
         }
 
         $registerForm->populate($user->toArray());
+        $registerForm->getElement('submit')->setLabel('Update')->setAttrib('class', 'btn btn-primary');
 
         //Make password and confirm password field option if fill then apply validation
         if (!$registerForm->getValue('password')) {
