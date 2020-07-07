@@ -1,13 +1,21 @@
 <?php
-
+/**
+ * Class Application_Model_Guestbook
+ */
 class Application_Model_Guestbook
 {
+    /**
+     * @var fields
+     */
+    private $_comment;
+    private $_created;
+    private $_email;
+    private $_id;
 
-    protected $_comment;
-    protected $_created;
-    protected $_email;
-    protected $_id;
-
+    /**
+     * Application_Model_Guestbook constructor.
+     * @param array|null $options
+     */
     public function __construct(array $options = null)
     {
         if (is_array($options)) {
@@ -15,6 +23,11 @@ class Application_Model_Guestbook
         }
     }
 
+    /**
+     * @param $name
+     * @param $value
+     * @throws Exception
+     */
     public function __set($name, $value)
     {
         $method = 'set' . $name;
@@ -24,6 +37,11 @@ class Application_Model_Guestbook
         $this->$method($value);
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     * @throws Exception
+     */
     public function __get($name)
     {
         $method = 'get' . $name;
@@ -33,7 +51,11 @@ class Application_Model_Guestbook
         return $this->$method();
     }
 
-    public function setOptions(array $options)
+    /**
+     * @param array $options
+     * @return $this
+     */
+    public function setOptions(array $options): self
     {
         $methods = get_class_methods($this);
         foreach ($options as $key => $value) {
@@ -45,45 +67,73 @@ class Application_Model_Guestbook
         return $this;
     }
 
-    public function setComment($text)
+    /**
+     * @param string $text
+     * @return $this
+     */
+    public function setComment(string $text): self
     {
-        $this->_comment = (string) $text;
+        $this->_comment = $text;
         return $this;
     }
 
-    public function getComment()
+    /**
+     * @return string
+     */
+    public function getComment(): string
     {
         return $this->_comment;
     }
 
-    public function setEmail($email)
+    /**
+     * @param string $email
+     * @return $this
+     */
+    public function setEmail(string $email): self
     {
-        $this->_email = (string) $email;
+        $this->_email = $email;
         return $this;
     }
 
-    public function getEmail()
+    /**
+     * @return string
+     */
+    public function getEmail(): string
     {
         return $this->_email;
     }
 
-    public function setCreated($ts)
+    /**
+     * @param string $ts
+     * @return $this
+     */
+    public function setCreated(string $ts): self
     {
         $this->_created = $ts;
         return $this;
     }
 
-    public function getCreated()
+    /**
+     * @return string
+     */
+    public function getCreated(): string
     {
         return $this->_created;
     }
 
-    public function setId($id)
+    /**
+     * @param int $id
+     * @return $this
+     */
+    public function setId(int $id): self
     {
-        $this->_id = (int) $id;
+        $this->_id = (int)$id;
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->_id;
