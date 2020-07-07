@@ -48,9 +48,12 @@
                             ], null, true);
                             ?>
                             <td>
-                                <a class="icon" href="<?php echo $userEditUrl; ?>"><i class="fe fe-edit"></i></a>
-                                &nbsp;
-                                <a class="icon" href="<?php echo $userDeleteUrl; ?>"><i class="fe fe-trash"></i></a>
+                                <form action="<?php echo $userDeleteUrl; ?>" method="POST" onsubmit="return confirm('Do you really want to delete?');">
+                                    <a class="btn btn-primary" href="<?php echo $userEditUrl; ?>"><i
+                                                class="fe fe-edit"></i></a>
+                                    &nbsp;
+                                    <button type="submit" class="btn btn-danger"><i class="fe fe-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach ?>

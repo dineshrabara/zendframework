@@ -25,7 +25,7 @@ class Users_Form_Login extends Zend_Form
         $this->addElement($email);
 
         //password field
-        $password = new Zend_Form_Element_Text('password');
+        $password = new Zend_Form_Element_Password('password');
         $password->setAttrib('class', 'form-control');
         $password->setAttrib('placeholder', 'Password');
         $password->setDecorators($this->getBootstrapDecorator());

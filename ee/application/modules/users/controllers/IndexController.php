@@ -65,7 +65,7 @@ class Users_IndexController extends AdminController
     public function deleteAction()
     {
         $userId = $this->getRequest()->getParam('id');
-        if ($this->getRequest()->isGet() && $userId) {
+        if ($this->getRequest()->isPost() && $userId) {
             $modelObj = new Users_Model_UserMapper();
             if ($modelObj->delete($userId)) {
                 $this->_helper->FlashMessenger->addMessage(array('success' => "User has been successfully deleted."));
