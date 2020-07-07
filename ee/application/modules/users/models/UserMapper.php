@@ -48,6 +48,10 @@ class Users_Model_UserMapper
         $this->save($user);
     }
 
+    /**
+     * @param Users_Model_User $user
+     * @throws Exception
+     */
     public function save(Users_Model_User $user)
     {
         $data = $user->toArray();
@@ -137,6 +141,17 @@ class Users_Model_UserMapper
         $authAdapter->setIdentity($user->getEmail())->setCredential($user->getPassword());
 
         return $authAdapter;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     * @throws Exception
+     */
+
+    public function delete($id)
+    {
+        return $this->getDbTable()->delete("id = $id");
     }
 
 }

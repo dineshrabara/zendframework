@@ -58,7 +58,7 @@ class Users_Form_Register extends Zend_Form
 
         $this->addElement('submit', 'submit', array(
             'ignore' => true,
-            'label' => 'Login',
+            'label' => 'Register',
         ));
     }
 

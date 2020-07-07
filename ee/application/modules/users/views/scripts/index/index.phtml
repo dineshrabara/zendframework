@@ -33,16 +33,24 @@
                             <td><?php echo $this->escape($entry->last_name) ?></td>
                             <td><?php echo $this->escape($entry->email) ?></td>
                             <td><?php echo $this->escape(date_format(new DateTime($entry->created_at), 'd-m-Y H:i:s')); ?></td>
-                            <?php $userEditUrl = $this->url([
+                            <?php
+                            $userEditUrl = $this->url([
                                 'module' => 'users',
                                 'controller' => 'index',
                                 'action' => 'edit',
                                 'id' => $entry->id
-                            ], null, true); ?>
+                            ], null, true);
+                            $userDeleteUrl = $this->url([
+                                'module' => 'users',
+                                'controller' => 'index',
+                                'action' => 'delete',
+                                'id' => $entry->id
+                            ], null, true);
+                            ?>
                             <td>
-                                <a class="icon" href="<?php echo $userEditUrl; ?>">
-                                    <i class="fe fe-edit"></i>
-                                </a>
+                                <a class="icon" href="<?php echo $userEditUrl; ?>"><i class="fe fe-edit"></i></a>
+                                &nbsp;
+                                <a class="icon" href="<?php echo $userDeleteUrl; ?>"><i class="fe fe-trash"></i></a>
                             </td>
                         </tr>
                     <?php endforeach ?>

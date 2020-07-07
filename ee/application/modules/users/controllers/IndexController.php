@@ -24,16 +24,24 @@ class Users_IndexController extends Zend_Controller_Action
         $this->view->entries = $users->fetchAll();
     }
 
+    /**
+     * Edit action
+     * @throws Zend_Controller_Response_Exception
+     * @throws Zend_Form_Exception
+     */
     public function editAction()
     {
-        $requestParams = $this->getRequest()->getParams();
-        if (empty($requestParams['id'])) {
-            throw new Zend_Controller_Response_Exception('record not found', 404);
+        $userId = $this->getRequest()->getParam('id');
+        if (empty($userId)) {
+            throw new Zend_Controller_Response_Exception('Wrong parameter', 404);
         }
         $registerForm = new Users_Form_Register();
         $user = new Users_Model_User($registerForm->getValues());
         $mapper = new Users_Model_UserMapper();
-        $mapper->find($requestParams['id'], $user);
+        $mapper->find($userId, $user);
+        if (!$user->getId()) {
+            throw new Zend_Controller_Response_Exception('Record not found in database', 404);
+        }
 
         $registerForm->populate($user->toArray());
 
@@ -60,5 +68,21 @@ class Users_IndexController extends Zend_Controller_Action
     }
 
 
+    /**
+     * Delete action
+     */
+    public function deleteAction()
+    {
+        if ($this->getRequest()->isGet()) {
+            $userId = $this->getRequest()->getParam('id');
+            $modelObj = new Users_Model_UserMapper();
+            if ($modelObj->delete($userId)) {
+                $this->_helper->FlashMessenger->addMessage(array('success' => "User has been successfully deleted."));
+            } else {
+                $this->_helper->FlashMessenger->addMessage(array('danger' => "Some error occurred while deleting user, Please try after some time."));
+            }
+            $this->redirect('/users');
+        }
+    }
 }
 
