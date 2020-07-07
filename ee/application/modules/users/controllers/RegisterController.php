@@ -36,7 +36,7 @@ class Users_RegisterController extends Zend_Controller_Action
             }
             if (empty($this->view->errorMessage)) {
                 $mapper->register($user);
-                return $this->redirect('/auth/login');
+                return $this->redirect('/users/login');
             }
         }
 

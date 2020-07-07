@@ -3,3 +3,10 @@
         <div><?php echo $this->errorMessage; ?></div>
     </div>
 <?php endif; ?>
+<?php if (is_array($this->messages) && count($this->messages) >= 1): ?>
+    <?php foreach ($this->messages[0] as $key => $value): ?>
+        <div class="alert alert-<?php echo $key; ?>">
+            <?php echo $value; ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

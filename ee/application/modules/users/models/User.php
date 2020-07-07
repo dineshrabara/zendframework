@@ -140,7 +140,7 @@ class Users_Model_User
      */
     public function setPassword($password)
     {
-        $this->_password = md5((string)$password);
+        $this->_password = $password ? md5((string)$password) : '';
         return $this;
     }
 
@@ -186,6 +186,20 @@ class Users_Model_User
     public function getId()
     {
         return $this->_id;
+    }
+
+    /**
+     * Convert object to Array
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'first_name' => $this->getFirstName(),
+            'last_name' => $this->getLastName(),
+            'email' => $this->getEmail(),
+            'id' => $this->getId()
+        ];
     }
 
 }

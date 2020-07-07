@@ -20,7 +20,6 @@ class Users_LoginController extends Zend_Controller_Action
      */
     public function indexAction()
     {
-        $users = new Users_Model_User();
         $loginForm = new Users_Form_Login();
         $request = $this->getRequest();
 

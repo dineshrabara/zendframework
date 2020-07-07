@@ -45,14 +45,22 @@ class Users_Model_UserMapper
      */
     public function register(Users_Model_User $user)
     {
-        $data = array(
-            'first_name' => $user->getFirstName(),
-            'last_name' => $user->getLastName(),
-            'email' => $user->getEmail(),
-            'password' => $user->getPassword(),
-            'created_at' => date('Y-m-d H:i:s'),
-        );
-        $this->getDbTable()->insert($data);
+        $this->save($user);
+    }
+
+    public function save(Users_Model_User $user)
+    {
+        $data = $user->toArray();
+        if ($user->getPassword()) {
+            $data['password'] = $user->getPassword();
+        }
+
+        if (null === ($id = $user->getId())) {
+            unset($data['id']);
+            $this->getDbTable()->insert($data);
+        } else {
+            $this->getDbTable()->update($data, array('id = ?' => $id));
+        }
     }
 
     /**
@@ -65,7 +73,11 @@ class Users_Model_UserMapper
     {
         $select = $this->getDbTable()->select()
             ->from($this->_dbTable, [$field])
-            ->where("$field=?", $user->{$user->getMethod($field, 'get')}());
+            ->where("$field=?", $user->{$user->getMethodName($field, 'get')}());
+
+        if ($user->getId()) {
+            $select = $select->where('id!=?', $user->getId());
+        }
         $result = $select->getAdapter()->fetchOne($select);
         if ($result) {
             return true;
@@ -89,7 +101,7 @@ class Users_Model_UserMapper
             ->setEmail($row->email)
             ->setFirstName($row->first_name)
             ->setLastName($row->first_name)
-            ->setCreated($row->created_at);
+            ->setCreatedAt($row->created_at);
     }
 
     /**

@@ -46,6 +46,9 @@
         <!-- Body content start -->
         <div class="my-3 my-md-5">
             <div class="container">
+                <!-- Flash Message start -->
+                <?php echo $this->render('partial/flashMessage.phtml'); ?>
+                <!-- Flash Message End -->
                 <?php echo $this->layout()->content; ?>
             </div>
         </div>
