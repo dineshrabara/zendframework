@@ -9,45 +9,43 @@ class Application_Form_Guestbook extends Zend_Form
         $this->setMethod('post');
 
         // Add an email element
-        $this->addElement('text', 'email', array(
+        $this->addElement('text', 'email', [
             'label' => 'Your email address:',
             'required' => true,
-            'filters' => array('StringTrim'),
-             'validators' => array(
-                 'EmailAddress',
-             ),
-        ));
+            'filters' => ['StringTrim'],
+            'validators' => [
+                'EmailAddress',
+            ],
+        ]);
 
-         // Add the comment element
-         $this->addElement('textarea', 'comment', array(
-             'label' => 'Please Comment:',
-             'required' => true,
-             'validators' => array(
-                 array('validator' => 'StringLength', 'options' => array(0, 20)),
-             ),
-         ));
+        // Add the comment element
+        $this->addElement('textarea', 'comment', [
+            'label' => 'Please Comment:',
+            'required' => true,
+            'validators' => [
+                ['validator' => 'StringLength', 'options' => [0, 20]],
+            ],
+        ]);
 
-         // Add a captcha
-         $this->addElement('captcha', 'captcha', array(
-             'label' => 'Please enter the 5 letters displayed below:',
-             'required' => true,
-             'captcha' => array(
-                 'captcha' => 'Dumb',
-                 'wordLen' => 5,
-                 'timeout' => 300,
-             ),
-         ));
+        // Add a captcha
+        $this->addElement('captcha', 'captcha', [
+            'label' => 'Please enter the 5 letters displayed below:',
+            'required' => true,
+            'captcha' => [
+                'captcha' => 'Dumb',
+                'wordLen' => 5,
+                'timeout' => 300,
+            ],
+        ]);
 
-         // Add the submit button
-         $this->addElement('submit', 'submit', array(
-             'ignore' => true,
-             'label' => 'Sign Guestbook',
-         ));
+        // Add the submit button
+        $this->addElement('submit', 'submit', [
+            'ignore' => true,
+            'label' => 'Sign Guestbook',
+        ]);
 
-         // And finally add some CSRF protection
-         $this->addElement('hash', 'csrf', array(
-             'ignore' => true,
-         ));
+        // And finally add some CSRF protection
+        $this->addElement('hash', 'csrf');
     }
 
 }
