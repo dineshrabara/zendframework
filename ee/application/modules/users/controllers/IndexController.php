@@ -83,6 +83,7 @@ class Users_IndexController extends Zend_Controller_Action
             }
             $this->redirect('/users');
         }
+        throw new Zend_Controller_Response_Exception('Wrong parameter', 404);
     }
 }
 
