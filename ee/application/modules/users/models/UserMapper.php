@@ -110,5 +110,20 @@ class Users_Model_UserMapper
         return $entries;
     }
 
+    /**
+     * @param Users_Model_User $user
+     * @return Zend_Auth_Adapter_DbTable
+     * @throws Exception
+     */
+    public function login(Users_Model_User $user)
+    {
+        $select = $this->getDbTable()->select();
+        $authAdapter = new Zend_Auth_Adapter_DbTable($select->getAdapter(), 'users');
+        $authAdapter->setIdentityColumn('email')->setCredentialColumn('password');
+        $authAdapter->setIdentity($user->getEmail())->setCredential($user->getPassword());
+
+        return $authAdapter;
+    }
+
 }
 

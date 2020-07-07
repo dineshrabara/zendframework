@@ -94,6 +94,10 @@ MD5 for password
     --okay now
 structural interface
 edit url
+    guestbook/edit/1 for edit
+    guestbook/delete/1 for delete[delete action]
+custom validation
+    isvalid method override
 
 
 for module create commands

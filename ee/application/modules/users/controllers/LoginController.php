@@ -25,17 +25,15 @@ class Users_LoginController extends Zend_Controller_Action
         $request = $this->getRequest();
 
         if ($this->getRequest()->isPost() && $loginForm->isValid($_POST)) {
-            $data = $loginForm->getValues();
-            $data['password'] = md5($data['password']);
+            $user = new Users_Model_User($loginForm->getValues());
+            $mapper = new Users_Model_UserMapper();
             $auth = Zend_Auth::getInstance();
+            $authAdapter = $mapper->login($user);
 
-            $authAdapter = new Zend_Users_Adapter_DbTable($users->getAdapter(), 'users');
-            $authAdapter->setIdentityColumn('email')->setCredentialColumn('password');
-            $authAdapter->setIdentity($data['email'])->setCredential($data['password']);
             $result = $auth->authenticate($authAdapter);
 
             if ($result->isValid()) {
-                $storage = new Zend_Users_Storage_Session();
+                $storage = new Zend_Auth_Storage_Session();
                 $storage->write($authAdapter->getResultRowObject());
                 $this->redirect('/');
             }
@@ -53,7 +51,7 @@ class Users_LoginController extends Zend_Controller_Action
     {
         $storage = new Zend_Auth_Storage_Session();
         $storage->clear();
-        $this->redirect('auth/login');
+        $this->redirect('users/login');
     }
 }
 
