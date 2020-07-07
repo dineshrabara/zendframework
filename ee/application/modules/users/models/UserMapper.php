@@ -88,7 +88,8 @@ class Users_Model_UserMapper
         $user->setId($row->id)
             ->setEmail($row->email)
             ->setFirstName($row->first_name)
-            ->setCreated($row->created);
+            ->setLastName($row->first_name)
+            ->setCreated($row->created_at);
     }
 
     /**
@@ -103,8 +104,9 @@ class Users_Model_UserMapper
             $entry = new Users_Model_User();
             $entry->setId($row->id)
                 ->setEmail($row->email)
-                ->setFirstName($row->comment)
-                ->setCreated($row->created);
+                ->setFirstName($row->first_name)
+                ->setLastName($row->last_name)
+                ->setCreatedAt($row->created_at);
             $entries[] = $entry;
         }
         return $entries;

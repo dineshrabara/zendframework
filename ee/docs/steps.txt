@@ -98,12 +98,12 @@ edit url
     guestbook/delete/1 for delete[delete action]
 custom validation
     isvalid method override
-
+how to share data with all controller
 
 for module create commands
- ../bin/zf.sh create controller register index auth
+ ../bin/zf.sh create controller Index 1 users
 ../bin/zf.sh enable form auth
-../bin/zf.sh create form login auth
+../bin/zf.sh create form login users
 ../bin/zf.sh create model User
 ../bin/zf.sh create db-table User users
 ../bin/zf.sh create model UserMapper

@@ -1,0 +1,48 @@
+<div class="row row-cards row-deck">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Users List</h3>
+                <div class="card-options">
+                    <a href="<?php echo $this->url(
+                        array(
+                            'controller' => 'users',
+                            'action' => 'register',
+                        ),
+                        'default',
+                        true) ?>" class="btn btn-primary btn-lg">New User</a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-vcenter text-nowrap">
+                    <thead>
+                    <tr>
+                        <th class="w-1">No.</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Created At</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->entries as $key => $entry): ?>
+                        <tr>
+                            <td><span class="text-muted"><?php echo $key + 1; ?></span></td>
+                            <td><?php echo $this->escape($entry->first_name) ?></td>
+                            <td><?php echo $this->escape($entry->last_name) ?></td>
+                            <td><?php echo $this->escape($entry->email) ?></td>
+                            <td><?php echo $this->escape($entry->created_at) ?></td>
+                            <td>
+                                <a class="icon" href="javascript:void(0)">
+                                    <i class="fe fe-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

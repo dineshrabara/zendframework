@@ -33,13 +33,16 @@
         <modelFile modelName="UserMapper"/>
       </modelsDirectory>
       <modulesDirectory>
-        <moduleDirectory moduleName="auth">
+        <moduleDirectory moduleName="users">
           <configsDirectory enabled="false"/>
           <controllersDirectory>
             <controllerFile controllerName="Login">
               <actionMethod actionName="index"/>
             </controllerFile>
             <controllerFile controllerName="Register">
+              <actionMethod actionName="index"/>
+            </controllerFile>
+            <controllerFile controllerName="Index">
               <actionMethod actionName="index"/>
             </controllerFile>
           </controllersDirectory>
@@ -58,6 +61,9 @@
                 <viewScriptFile forActionName="index"/>
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Register">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Index">
                 <viewScriptFile forActionName="index"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>

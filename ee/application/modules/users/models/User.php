@@ -33,7 +33,7 @@ class Users_Model_User
      */
     public function __set($name, $value)
     {
-        $method = 'set' . $name;
+        $method = $this->getMethodName($name);
         if (('mapper' == $name) || !method_exists($this, $method)) {
             throw new Exception('Invalid user property');
         }
@@ -47,7 +47,7 @@ class Users_Model_User
      */
     public function __get($name)
     {
-        $method = 'get' . $name;
+        $method = $this->getMethodName($name, 'get');
         if (('mapper' == $name) || !method_exists($this, $method)) {
             throw new Exception('Invalid user property');
         }
@@ -62,7 +62,7 @@ class Users_Model_User
     {
         $methods = get_class_methods($this);
         foreach ($options as $key => $value) {
-            $method = $this->getMethod($key);
+            $method = $this->getMethodName($key);
             if (in_array($method, $methods)) {
                 $this->$method($value);
             }
@@ -75,7 +75,7 @@ class Users_Model_User
      * @param string $prefix
      * @return string
      */
-    public function getMethod($name, $prefix = 'set'): string
+    public function getMethodName($name, $prefix = 'set'): string
     {
         return $prefix . str_replace('_', '', ucwords($name, '_'));
     }
@@ -95,7 +95,7 @@ class Users_Model_User
      */
     public function getFirstName()
     {
-        return $this->_first_name;
+        return ucfirst($this->_first_name);
     }
 
     /**
@@ -113,7 +113,7 @@ class Users_Model_User
      */
     public function getLastName()
     {
-        return $this->_last_name;
+        return ucfirst($this->_last_name);
     }
 
     /**
