@@ -1,9 +1,20 @@
 <?php
 
-class Application_Model_UserMapper
+/**
+ * Class Auth_Model_UserMapper
+ */
+class Auth_Model_UserMapper
 {
+    /**
+     * @var
+     */
     protected $_dbTable;
 
+    /**
+     * @param $dbTable
+     * @return $this
+     * @throws Exception
+     */
     public function setDbTable($dbTable)
     {
         if (is_string($dbTable)) {
@@ -16,15 +27,23 @@ class Application_Model_UserMapper
         return $this;
     }
 
+    /**
+     * @return mixed
+     * @throws Exception
+     */
     public function getDbTable()
     {
         if (null === $this->_dbTable) {
-            $this->setDbTable('Application_Model_DbTable_User');
+            $this->setDbTable('Auth_Model_DbTable_User');
         }
         return $this->_dbTable;
     }
 
-    public function register(Application_Model_User $user)
+    /**
+     * @param Auth_Model_User $user
+     * @throws Exception
+     */
+    public function register(Auth_Model_User $user)
     {
         $data = array(
             'first_name' => $user->getFirstName(),
@@ -36,7 +55,13 @@ class Application_Model_UserMapper
         $this->getDbTable()->insert($data);
     }
 
-    function isExist(Application_Model_User $user, $field = null)
+    /**
+     * @param Auth_Model_User $user
+     * @param null $field
+     * @return bool
+     * @throws Exception
+     */
+    function isExist(Auth_Model_User $user, $field = null)
     {
         $select = $this->getDbTable()->select()
             ->from($this->_dbTable, [$field])
@@ -48,7 +73,12 @@ class Application_Model_UserMapper
         return false;
     }
 
-    public function find($id, Application_Model_User $user)
+    /**
+     * @param $id
+     * @param Auth_Model_User $user
+     * @throws Exception
+     */
+    public function find($id, Auth_Model_User $user)
     {
         $result = $this->getDbTable()->find($id);
         if (0 == count($result)) {
@@ -57,19 +87,23 @@ class Application_Model_UserMapper
         $row = $result->current();
         $user->setId($row->id)
             ->setEmail($row->email)
-            ->setComment($row->comment)
+            ->setFirstName($row->first_name)
             ->setCreated($row->created);
     }
 
+    /**
+     * @return array
+     * @throws Exception
+     */
     public function fetchAll()
     {
         $resultSet = $this->getDbTable()->fetchAll();
         $entries = array();
         foreach ($resultSet as $row) {
-            $entry = new Application_Model_User();
+            $entry = new Auth_Model_User();
             $entry->setId($row->id)
                 ->setEmail($row->email)
-                ->setComment($row->comment)
+                ->setFirstName($row->comment)
                 ->setCreated($row->created);
             $entries[] = $entry;
         }

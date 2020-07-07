@@ -1,17 +1,27 @@
 <?php
 
+/**
+ * Class Auth_LoginController
+ */
 class Auth_LoginController extends Zend_Controller_Action
 {
 
+    /**
+     * Init for layout auth
+     */
     public function init()
     {
         $this->_helper->layout->setLayout('auth');
     }
 
+    /**
+     * Login form action get and post
+     * @throws Zend_Form_Exception
+     */
     public function indexAction()
     {
-        $users = new Application_Model_User();
-        $loginForm = new Application_Form_AuthLogin();
+        $users = new Auth_Model_User();
+        $loginForm = new Auth_Form_Login();
         $request = $this->getRequest();
 
         if ($this->getRequest()->isPost() && $loginForm->isValid($_POST)) {
@@ -36,6 +46,9 @@ class Auth_LoginController extends Zend_Controller_Action
         $this->view->loginForm = $loginForm;
     }
 
+    /**
+     * for logout action
+     */
     public function outAction()
     {
         $storage = new Zend_Auth_Storage_Session();

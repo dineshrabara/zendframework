@@ -1,8 +1,14 @@
 <?php
 
-class Application_Form_AuthRegister extends Zend_Form
+/**
+ * Class Auth_Form_Register
+ */
+class Auth_Form_Register extends Zend_Form
 {
 
+    /**
+     * @throws Zend_Form_Exception
+     */
     public function init()
     {
         $this->setMethod('post');
