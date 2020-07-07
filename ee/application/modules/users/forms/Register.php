@@ -1,11 +1,9 @@
 <?php
-
 /**
  * Class Users_Form_Register
  */
 class Users_Form_Register extends Zend_Form
 {
-
     /**
      * @throws Zend_Form_Exception
      */
@@ -22,9 +20,9 @@ class Users_Form_Register extends Zend_Form
         $firstName->setLabel('First Name:');
         $firstName->setRequired(true);
         $firstName->setFilters(['StringTrim']);
-        $firstName->setValidators(array(
-            array('validator' => 'StringLength', 'options' => array(0, 50)),
-        ));
+        $firstName->setValidators([
+            ['validator' => 'StringLength', 'options' => [0, 50]],
+        ]);
         $this->addElement($firstName);
 
         $lastName = new Zend_Form_Element_Text('last_name');
@@ -34,9 +32,9 @@ class Users_Form_Register extends Zend_Form
         $lastName->setLabel('Last Name:');
         $lastName->setRequired(true);
         $lastName->setFilters(['StringTrim']);
-        $lastName->setValidators(array(
-            array('validator' => 'StringLength', 'options' => array(0, 50)),
-        ));
+        $lastName->setValidators([
+            ['validator' => 'StringLength', 'options' => [0, 50]],
+        ]);
         $this->addElement($lastName);
 
         //email field
@@ -47,9 +45,9 @@ class Users_Form_Register extends Zend_Form
         $email->setLabel('Email Address:');
         $email->setRequired(true);
         $email->setFilters(['StringTrim']);
-        $email->setValidators(array(
-            array('validator' => 'StringLength', 'options' => array(0, 50)),
-        ));
+        $email->setValidators([
+            ['validator' => 'StringLength', 'options' => [0, 50]],
+        ]);
         $this->addElement($email);
 
         $password = new Zend_Form_Element_Password('password');
@@ -59,9 +57,9 @@ class Users_Form_Register extends Zend_Form
         $password->setLabel('Password:');
         $password->setRequired(true);
         $password->setFilters(['StringTrim']);
-        $email->setValidators(array(
-            array('validator' => 'StringLength', 'options' => array(8, 32)),
-        ));
+        $email->setValidators([
+            ['validator' => 'StringLength', 'options' => [8, 32]],
+        ]);
         $this->addElement($password);
 
         $confirm_password = clone $password;
@@ -71,9 +69,7 @@ class Users_Form_Register extends Zend_Form
         $this->addElement($confirm_password);
 
         // Add CSRF protection.
-        $this->addElement('hash', 'csrf', array(
-            'ignore' => true,
-        ));
+        $this->addElement('hash', 'csrf');
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setDecorators($this->getBootstrapDecorator());
@@ -90,24 +86,23 @@ class Users_Form_Register extends Zend_Form
      */
     private function getBootstrapDecorator()
     {
-        return array(
+        return [
             'ViewHelper',
             'Description',
             'Errors',
-            array(
+            [
                 'Label',
-                array(
+                [
                     'class' => 'form-label'
-                )
-            ),
-            array(
+                ]
+            ],
+            [
                 'HtmlTag',
-                array(
+                [
                     'class' => 'form-control'
-                )
-            )
-        );
+                ]
+            ]
+        ];
     }
 
 }
-
