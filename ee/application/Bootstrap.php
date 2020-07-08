@@ -16,7 +16,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $path = realpath(APPLICATION_PATH . '/../..');
 
         $moduleNames = [
-            'auth'
+            'users'
         ];
 
         $modulePath = $path . '/ee/application/modules/';
@@ -25,9 +25,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
                 'path' => 'forms/',
                 'namespace' => 'Forms',
             ],
-            'models' => [
-                'path' => 'models',
-                'namespace' => 'Models',
+            'service' => [
+                'path' => 'service',
+                'namespace' => 'Service',
             ],
         ];
 
