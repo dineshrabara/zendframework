@@ -49,8 +49,32 @@ class Users_Service_User
     /**
      * logout service
      */
-    public function logOut(){
+    public function logOut()
+    {
         $storage = new Zend_Auth_Storage_Session();
         $storage->clear();
+    }
+
+    /**
+     * @param Users_Model_User $user
+     * @throws Zend_Mail_Exception
+     */
+    public function sendMail(Users_Model_User $user)
+    {
+        $transport = new Zend_Mail_Transport_Smtp();
+        $mail = new Zend_Mail();
+        $mail->setDefaultTransport($transport);
+        $mail->setBodyText('
+               Dear User,
+               
+               Welcome to demo application mail functionalities 
+               
+               Thanks
+               Dinesh
+        ');
+        $mail->setFrom('d.rabara@easterenterprise.com', 'Dinesh Rabara');
+        $mail->addTo($user->getEmail(), $user->getFirstName());
+        $mail->setSubject('Welcome to demo application');
+        $mail->send();
     }
 }

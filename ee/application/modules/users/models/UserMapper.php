@@ -113,7 +113,7 @@ class Users_Model_UserMapper
         $user->setId($row->id)
             ->setEmail($row->email)
             ->setFirstName($row->first_name)
-            ->setLastName($row->first_name)
+            ->setLastName($row->last_name)
             ->setCreatedAt($row->created_at);
     }
 

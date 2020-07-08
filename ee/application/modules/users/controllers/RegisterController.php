@@ -5,11 +5,12 @@
 class Users_RegisterController extends Zend_Controller_Action
 {
     /**
-     * Init for layout auth
+     * Init for layout auth and central members
      */
     public function init()
     {
         $this->_helper->layout->setLayout('auth');
+        $this->userService = new Users_Service_User();
     }
 
     /**
@@ -36,6 +37,7 @@ class Users_RegisterController extends Zend_Controller_Action
 
             if (empty($this->view->errorMessage)) {
                 $mapper->register($user);
+                $this->userService->sendMail($user);
                 return $this->redirect('/users/login');
             }
 
