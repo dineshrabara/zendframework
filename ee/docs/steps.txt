@@ -104,6 +104,10 @@ Queries
         isvalid method override https://framework.zend.com/manual/1.12/en/zend.form.elements.html
     how to share data with all controller
     delete popup for confirmation once base on model boostrap
+    ACL
+    Mail
+    Service
+
 
 for module create commands
  ../bin/zf.sh create controller Index 1 users
