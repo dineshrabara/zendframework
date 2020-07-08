@@ -78,11 +78,15 @@ Plan for 06-07-2020
 Plan for 07-07-2020
 - Form layout [Yesterday's Task]
 - user add/edit/delete/searching/pagination/permission
-- Purchase add/edit/delete/searching/pagination/permission
-- Order add/edit/delete/searching/pagination/permission
 - use DB_Table+model+wrapper=[model]
 - user view helper for format price or date
-- service layout for business
+
+Plan for 08-08-2020
+- Change requested by mentor
+- Service layout for business
+- Purchase add/edit/delete
+- Order add/edit/delete
+- Permission base on Zend_Acl
 
 Queries
     form decorate
