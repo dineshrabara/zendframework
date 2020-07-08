@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class Users_Form_Login
  */
@@ -36,9 +35,7 @@ class Users_Form_Login extends Zend_Form
 
 
         // Add CSRF protection.
-        $this->addElement('hash', 'csrf', array(
-            'ignore' => true,
-        ));
+        $this->addElement('hash', 'csrf');
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setDecorators($this->getBootstrapDecorator());
@@ -55,24 +52,23 @@ class Users_Form_Login extends Zend_Form
      */
     private function getBootstrapDecorator()
     {
-        return array(
+        return [
             'ViewHelper',
             'Description',
             'Errors',
-            array(
+            [
                 'Label',
-                array(
+                [
                     'class' => 'form-label'
-                )
-            ),
-            array(
+                ]
+            ],
+            [
                 'HtmlTag',
-                array(
+                [
                     'class' => 'form-control'
-                )
-            )
-        );
+                ]
+            ]
+        ];
     }
 
 }
-

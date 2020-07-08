@@ -1,17 +1,16 @@
 <?php
-
 /**
  * Class Users_RegisterController
  */
 class Users_RegisterController extends Zend_Controller_Action
 {
-
     /**
-     * Init for layout auth
+     * Init for layout auth and central members
      */
     public function init()
     {
         $this->_helper->layout->setLayout('auth');
+        $this->userService = new Users_Service_User();
     }
 
     /**
@@ -31,13 +30,17 @@ class Users_RegisterController extends Zend_Controller_Action
             if ($data['password'] != $data['confirm_password']) {
                 $this->view->errorMessage = "Password and confirm password not match Please check";
             }
+
             if ($mapper->isExist($user, 'email')) {
                 $this->view->errorMessage = "Email already taken. Please choose another one.";
             }
+
             if (empty($this->view->errorMessage)) {
                 $mapper->register($user);
+                $this->userService->sendMail($user);
                 return $this->redirect('/users/login');
             }
+
         }
 
         $this->view->authRegister = $authRegister;
