@@ -1,0 +1,69 @@
+<div class="row row-cards row-deck">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Purchases List</h3>
+                <div class="card-options">
+                    <a href="<?php echo $this->url(
+                        array(
+                            'module' => 'purchases',
+                            'controller' => 'index',
+                            'action' => 'store',
+                        ),
+                        'default',
+                        true) ?>" class="btn btn-primary btn-lg">New Purchase</a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-vcenter text-nowrap">
+                    <thead>
+                    <tr>
+                        <th class="w-1">No.</th>
+                        <th>Date</th>
+                        <th>Ledger/Account</th>
+                        <th>Total Qty</th>
+                        <th>Total Amount</th>
+                        <th>Created At</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->entries as $key => $entry): ?>
+                        <tr>
+                            <td><span class="text-muted"><?php echo $key + 1; ?></span></td>
+                            <td><?php echo $this->escape($entry->purchase_date) ?></td>
+                            <td><?php echo $this->escape($entry->ledger_id) ?></td>
+                            <td><?php echo $this->escape($entry->purchase_date) ?></td>
+                            <td><?php echo $this->escape($entry->purchase_date) ?></td>
+                            <td><?php echo $this->escape(date_format(new DateTime($entry->created_at), 'd-m-Y H:i:s')); ?></td>
+                            <?php
+                            $editUrl = $this->url([
+                                'module' => 'purchases',
+                                'controller' => 'index',
+                                'action' => 'store',
+                                'id' => $entry->id
+                            ], null, true);
+                            $deleteUrl = $this->url([
+                                'module' => 'purchases',
+                                'controller' => 'index',
+                                'action' => 'delete',
+                                'id' => $entry->id
+                            ], null, true);
+                            ?>
+                            <td>
+                                <form action="<?php echo $deleteUrl; ?>" method="POST"
+                                      onsubmit="return confirm('Do you really want to delete?');">
+                                    <a class="btn btn-primary" href="<?php echo $editUrl; ?>"><i
+                                                class="fe fe-edit"></i></a>
+                                    &nbsp;
+                                    <button type="submit" class="btn btn-danger"><i class="fe fe-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

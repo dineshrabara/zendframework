@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class Users_Model_UserMapper
  */
@@ -8,7 +7,7 @@ class Users_Model_UserMapper
     /**
      * @var
      */
-    protected $_dbTable;
+    private $_dbTable;
 
     /**
      * @param $dbTable
@@ -58,15 +57,18 @@ class Users_Model_UserMapper
         if ($user->getPassword()) {
             $data['password'] = $user->getPassword();
         }
+
         if (!$user->getCreatedAt()) {
             $data['created_at'] = date('Y-m-d H:i:s');
         }
+
         if (null === ($id = $user->getId())) {
             unset($data['id']);
             $this->getDbTable()->insert($data);
         } else {
             $this->getDbTable()->update($data, array('id = ?' => $id));
         }
+
     }
 
     /**
@@ -84,10 +86,13 @@ class Users_Model_UserMapper
         if ($user->getId()) {
             $select = $select->where('id!=?', $user->getId());
         }
+
         $result = $select->getAdapter()->fetchOne($select);
+
         if ($result) {
             return true;
         }
+
         return false;
     }
 
@@ -99,9 +104,11 @@ class Users_Model_UserMapper
     public function find($id, Users_Model_User $user)
     {
         $result = $this->getDbTable()->find($id);
+
         if (0 == count($result)) {
             return;
         }
+
         $row = $result->current();
         $user->setId($row->id)
             ->setEmail($row->email)
@@ -141,7 +148,6 @@ class Users_Model_UserMapper
         $authAdapter = new Zend_Auth_Adapter_DbTable($select->getAdapter(), 'users');
         $authAdapter->setIdentityColumn('email')->setCredentialColumn('password');
         $authAdapter->setIdentity($user->getEmail())->setCredential($user->getPassword());
-
         return $authAdapter;
     }
 
@@ -157,4 +163,3 @@ class Users_Model_UserMapper
     }
 
 }
-

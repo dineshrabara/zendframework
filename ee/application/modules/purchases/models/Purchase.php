@@ -1,21 +1,18 @@
 <?php
 /**
- * Class Users_Model_User
+ * Class Purchases_Model_Purchase
  */
-class Users_Model_User
+class Purchases_Model_Purchase
 {
     /**
      * @fields
      */
-    private $_created_at;
-    private $_password;
-    private $_email;
-    private $_last_name;
-    private $_first_name;
+    private $_ledger_id;
+    private $_purchase_date;
     private $_id;
 
     /**
-     * Users_Model_User constructor.
+     * Purchases_Model_Purchase constructor.
      * @param array|null $options
      */
     public function __construct(array $options = null)
@@ -34,7 +31,7 @@ class Users_Model_User
     {
         $method = $this->getMethodName($name);
         if (('mapper' == $name) || !method_exists($this, $method)) {
-            throw new Exception('Invalid user property');
+            throw new Exception('Invalid Purchase property');
         }
         $this->$method($value);
     }
@@ -48,7 +45,7 @@ class Users_Model_User
     {
         $method = $this->getMethodName($name, 'get');
         if (('mapper' == $name) || !method_exists($this, $method)) {
-            throw new Exception('Invalid user property');
+            throw new Exception('Invalid Purchase property');
         }
         return $this->$method();
     }
@@ -83,72 +80,36 @@ class Users_Model_User
      * @param string $text
      * @return $this
      */
-    public function setFirstName(string $text): self
+    public function setLedgerId(string $text): self
     {
-        $this->_first_name = $text;
+        $this->_ledger_id = $text;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getFirstName(): string
+    public function getLedgerId(): string
     {
-        return ucfirst($this->_first_name);
+        return ucfirst($this->_ledger_id);
     }
 
     /**
      * @param string $text
      * @return $this
      */
-    public function setLastName(string $text): self
+    public function setPurchaseDate(string $text): self
     {
-        $this->_last_name = $text;
+        $this->_purchase_date = $text;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getLastName(): string
+    public function getPurchaseDate(): string
     {
-        return ucfirst($this->_last_name);
-    }
-
-    /**
-     * @param string $email
-     * @return $this
-     */
-    public function setEmail(string $email): self
-    {
-        $this->_email = (string)$email;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->_email;
-    }
-
-    /**
-     * @param string $password
-     * @return $this
-     */
-    public function setPassword(string $password): self
-    {
-        $this->_password = $password ? md5($password) : '';
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->_password;
+        return ucfirst($this->_purchase_date);
     }
 
     /**
@@ -194,9 +155,8 @@ class Users_Model_User
     public function toArray(): array
     {
         return [
-            'first_name' => $this->getFirstName(),
-            'last_name' => $this->getLastName(),
-            'email' => $this->getEmail(),
+            'ledger_id' => $this->getLedgerId(),
+            'purchase_date' => $this->getPurchaseDate(),
             'id' => $this->getId()
         ];
     }
