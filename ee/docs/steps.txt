@@ -101,7 +101,7 @@ Queries
         guestbook/edit/1 for edit
         guestbook/delete/1 for delete[delete action]
     custom validation
-        isvalid method override
+        isvalid method override https://framework.zend.com/manual/1.12/en/zend.form.elements.html
     how to share data with all controller
     delete popup for confirmation once base on model boostrap
 

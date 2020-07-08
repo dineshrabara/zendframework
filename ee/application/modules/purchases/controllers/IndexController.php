@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class Purchases_IndexController
  */

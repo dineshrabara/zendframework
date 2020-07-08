@@ -103,7 +103,6 @@ class Purchases_Model_PurchaseMapper
      * @return mixed
      * @throws Exception
      */
-
     public function delete($id)
     {
         return $this->getDbTable()->delete("id = $id");

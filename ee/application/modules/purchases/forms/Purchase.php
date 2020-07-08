@@ -31,7 +31,6 @@ class Purchases_Form_Purchase extends Zend_Form
         $purchaseDate->setFilters(['StringTrim']);
         $this->addElement($purchaseDate);
 
-
         // Add CSRF protection.
         $this->addElement('hash', 'csrf');
 
