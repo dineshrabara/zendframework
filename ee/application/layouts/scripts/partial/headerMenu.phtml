@@ -6,15 +6,21 @@
                     <li class="nav-item">
                         <a href="/" class="nav-link"><i class="fe fe-home"></i> Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="/users/index" class="nav-link"><i class="fe fe-check-square"></i> Users</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/purchases/index" class="nav-link"><i class="fe fe-file-text"></i> Purchase</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/guestbook/index" class="nav-link"><i class="fe fe-file-text"></i> Guestbook</a>
-                    </li>
+                    <?php if ($this->acl->isAllowed($this->currentUser->role, 'users')): ?>
+                        <li class="nav-item dropdown">
+                            <a href="/users/index" class="nav-link"><i class="fe fe-check-square"></i> Users</a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($this->acl->isAllowed($this->currentUser->role, 'purchases')): ?>
+                        <li class="nav-item">
+                            <a href="/purchases/index" class="nav-link"><i class="fe fe-file-text"></i> Purchase</a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($this->acl->isAllowed($this->currentUser->role, 'guestbook')): ?>
+                        <li class="nav-item">
+                            <a href="/guestbook/index" class="nav-link"><i class="fe fe-file-text"></i> Guestbook</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

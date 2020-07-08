@@ -15,7 +15,7 @@ CREATE TABLE users (
       password_salt VARCHAR(255) NULL,
       created_at DATETIME NOT NULL
     );
-
+ALTER TABLE users ADD role varchar(20) default "normal" AFTER id;
 DROP TABLE IF EXISTS purchases; CREATE TABLE purchases (
                        id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
                        ledger_id integer NULL,
