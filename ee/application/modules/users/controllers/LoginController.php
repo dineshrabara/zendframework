@@ -1,11 +1,9 @@
 <?php
-
 /**
  * Class Users_LoginController
  */
 class Users_LoginController extends Zend_Controller_Action
 {
-
     /**
      * Init for layout auth
      */
@@ -28,7 +26,6 @@ class Users_LoginController extends Zend_Controller_Action
             $mapper = new Users_Model_UserMapper();
             $auth = Zend_Auth::getInstance();
             $authAdapter = $mapper->login($user);
-
             $result = $auth->authenticate($authAdapter);
 
             if ($result->isValid()) {
@@ -36,8 +33,8 @@ class Users_LoginController extends Zend_Controller_Action
                 $storage->write($authAdapter->getResultRowObject());
                 $this->redirect('/');
             }
-            $this->view->errorMessage = "Invalid username or password. Please try again.";
 
+            $this->view->errorMessage = "Invalid username or password. Please try again.";
         }
 
         $this->view->loginForm = $loginForm;
@@ -52,5 +49,5 @@ class Users_LoginController extends Zend_Controller_Action
         $storage->clear();
         $this->redirect('users/login');
     }
-}
 
+}

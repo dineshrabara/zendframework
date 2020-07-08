@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class Users_Model_User
  */
@@ -8,12 +7,12 @@ class Users_Model_User
     /**
      * @fields
      */
-    protected $_created_at;
-    protected $_password;
-    protected $_email;
-    protected $_last_name;
-    protected $_first_name;
-    protected $_id;
+    private $_created_at;
+    private $_password;
+    private $_email;
+    private $_last_name;
+    private $_first_name;
+    private $_id;
 
     /**
      * Users_Model_User constructor.
@@ -58,7 +57,7 @@ class Users_Model_User
      * @param array $options
      * @return $this
      */
-    public function setOptions(array $options)
+    public function setOptions(array $options): self
     {
         $methods = get_class_methods($this);
         foreach ($options as $key => $value) {
@@ -81,66 +80,66 @@ class Users_Model_User
     }
 
     /**
-     * @param $text
+     * @param string $text
      * @return $this
      */
-    public function setFirstName($text)
+    public function setFirstName(string $text): self
     {
-        $this->_first_name = (string)$text;
+        $this->_first_name = $text;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return ucfirst($this->_first_name);
     }
 
     /**
-     * @param $text
+     * @param string $text
      * @return $this
      */
-    public function setLastName($text)
+    public function setLastName(string $text): self
     {
-        $this->_last_name = (string)$text;
+        $this->_last_name = $text;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getLastName()
+    public function getLastName(): string
     {
         return ucfirst($this->_last_name);
     }
 
     /**
-     * @param $email
+     * @param string $email
      * @return $this
      */
-    public function setEmail($email)
+    public function setEmail(string $email): self
     {
         $this->_email = (string)$email;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->_email;
     }
 
     /**
-     * @param $password
+     * @param string $password
      * @return $this
      */
-    public function setPassword($password)
+    public function setPassword(string $password): self
     {
-        $this->_password = $password ? md5((string)$password) : '';
+        $this->_password = $password ? md5($password) : '';
         return $this;
     }
 
@@ -153,10 +152,10 @@ class Users_Model_User
     }
 
     /**
-     * @param $ts
+     * @param string $ts
      * @return $this
      */
-    public function setCreatedAt($ts)
+    public function setCreatedAt(string $ts): self
     {
         $this->_created_at = $ts;
         return $this;
@@ -171,12 +170,12 @@ class Users_Model_User
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return $this
      */
-    public function setId($id)
+    public function setId(int $id): self
     {
-        $this->_id = (int)$id;
+        $this->_id = $id;
         return $this;
     }
 
@@ -203,4 +202,3 @@ class Users_Model_User
     }
 
 }
-
